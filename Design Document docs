@@ -1,0 +1,206 @@
+# Smart Task Manager
+
+## Software Design Document
+
+---
+
+## Project Overview
+
+**Smart Task Manager** is a full-stack web application designed to help users manage their tasks efficiently. The system allows users to create, update, delete, and track tasks while providing secure authentication and role-based authorization.
+
+The application uses **JWT-based authentication** and supports two roles:
+
+* **Admin**
+* **User**
+
+Admins can monitor all tasks in the system, while users can manage only their own tasks.
+
+---
+
+## Tech Stack
+
+### Backend
+
+* Java
+* Spring Boot
+* REST APIs
+* Spring Data JPA
+* Spring Security
+* JWT Authentication
+* H2 / MySQL Database
+
+### Frontend
+
+* React
+* Axios for API calls
+* Role-based dashboards
+
+---
+
+## System Architecture
+
+The application follows a **three-tier architecture**:
+
+### 1. Presentation Layer (Frontend)
+
+Implemented using React.
+
+Responsibilities:
+
+* Display user interface
+* Handle user interactions
+* Send API requests to backend
+
+---
+
+### 2. Application Layer (Backend)
+
+Implemented using Spring Boot.
+
+Responsibilities:
+
+* Business logic implementation
+* User authentication and authorization
+* Task management operations
+
+---
+
+### 3. Data Layer (Database)
+
+Data is stored in a relational database.
+
+Responsibilities:
+
+* Store user information
+* Store tasks
+* Maintain role-based access data
+
+---
+
+## Features
+
+### User Features
+
+Users can:
+
+* Register an account
+* Login securely
+* Create tasks
+* View their tasks
+* Update tasks
+* Delete tasks
+
+---
+
+### Admin Features
+
+Admins can:
+
+* View all tasks in the system
+* Monitor users
+* Access admin dashboard
+
+---
+
+## Authentication and Security
+
+Authentication is implemented using **JWT (JSON Web Tokens)**.
+
+### Authentication Flow
+
+1. User registers or logs in
+2. Backend generates a JWT token
+3. Token is stored in the browser
+4. Each API request includes the token in the Authorization header
+5. Backend validates the token before processing the request
+
+---
+
+## Database Design
+
+### User Table
+
+| Field    | Type    | Description             |
+| -------- | ------- | ----------------------- |
+| id       | Integer | Unique user ID          |
+| name     | String  | Name of the user        |
+| username | String  | Login username          |
+| password | String  | Encrypted password      |
+| role     | String  | ROLE_USER or ROLE_ADMIN |
+
+---
+
+### Task Table
+
+| Field       | Type    | Description       |
+| ----------- | ------- | ----------------- |
+| id          | Integer | Task ID           |
+| title       | String  | Task title        |
+| description | String  | Task description  |
+| status      | String  | Task status       |
+| user_id     | Integer | Owner of the task |
+
+---
+
+## API Endpoints
+
+### User APIs
+
+| Method | Endpoint            | Description         |
+| ------ | ------------------- | ------------------- |
+| POST   | /api/users/register | Register a new user |
+| POST   | /api/users/login    | User login          |
+| GET    | /api/users/{id}     | Get user profile    |
+
+---
+
+### Task APIs
+
+| Method | Endpoint        | Description          |
+| ------ | --------------- | -------------------- |
+| GET    | /api/tasks      | Get user tasks       |
+| POST   | /api/tasks      | Create new task      |
+| PUT    | /api/tasks/{id} | Update task          |
+| DELETE | /api/tasks/{id} | Delete task          |
+| GET    | /api/tasks/all  | Admin view all tasks |
+
+---
+
+## Frontend Components
+
+Main React components include:
+
+* Login Page
+* Register Page
+* User Dashboard
+* Admin Dashboard
+* Task List
+* Add Task Page
+* Edit Task Page
+
+---
+
+## Project Workflow
+
+1. User registers
+2. User logs in
+3. JWT token is generated
+4. User creates and manages tasks
+5. Tasks are stored in the database
+6. Admin can monitor all tasks
+
+---
+
+## Future Enhancements
+
+* Task priority system
+* Task deadline reminders
+* Email notifications
+* Task analytics dashboard
+* Mobile application support
+
+---
+
+## Author
+
+Developed as part of a full-stack application project using Java Spring Boot and React.
