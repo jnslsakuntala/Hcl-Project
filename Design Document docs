@@ -1,10 +1,10 @@
-# Smart Task Manager
+# **Smart Task Manager**
 
-## Software Design Document
+## **Software Design Document**
 
 ---
 
-## Project Overview
+## **Project Overview**
 
 **Smart Task Manager** is a full-stack web application designed to help users manage their tasks efficiently. The system allows users to create, update, delete, and track tasks while providing secure authentication and role-based authorization.
 
@@ -17,9 +17,9 @@ Admins can monitor all tasks in the system, while users can manage only their ow
 
 ---
 
-## Tech Stack
+## **Tech Stack**
 
-### Backend
+### **Backend**
 
 * Java
 * Spring Boot
@@ -29,7 +29,7 @@ Admins can monitor all tasks in the system, while users can manage only their ow
 * JWT Authentication
 * H2 / MySQL Database
 
-### Frontend
+### **Frontend**
 
 * React
 * Axios for API calls
@@ -37,15 +37,15 @@ Admins can monitor all tasks in the system, while users can manage only their ow
 
 ---
 
-## System Architecture
+## **System Architecture**
 
 The application follows a **three-tier architecture**:
 
-### 1. Presentation Layer (Frontend)
+### **1. Presentation Layer (Frontend)**
 
 Implemented using React.
 
-Responsibilities:
+**Responsibilities:**
 
 * Display user interface
 * Handle user interactions
@@ -53,11 +53,11 @@ Responsibilities:
 
 ---
 
-### 2. Application Layer (Backend)
+### **2. Application Layer (Backend)**
 
 Implemented using Spring Boot.
 
-Responsibilities:
+**Responsibilities:**
 
 * Business logic implementation
 * User authentication and authorization
@@ -65,11 +65,11 @@ Responsibilities:
 
 ---
 
-### 3. Data Layer (Database)
+### **3. Data Layer (Database)**
 
 Data is stored in a relational database.
 
-Responsibilities:
+**Responsibilities:**
 
 * Store user information
 * Store tasks
@@ -77,9 +77,9 @@ Responsibilities:
 
 ---
 
-## Features
+## **Features**
 
-### User Features
+### **User Features**
 
 Users can:
 
@@ -92,7 +92,7 @@ Users can:
 
 ---
 
-### Admin Features
+### **Admin Features**
 
 Admins can:
 
@@ -102,11 +102,11 @@ Admins can:
 
 ---
 
-## Authentication and Security
+## **Authentication and Security**
 
 Authentication is implemented using **JWT (JSON Web Tokens)**.
 
-### Authentication Flow
+### **Authentication Flow**
 
 1. User registers or logs in
 2. Backend generates a JWT token
@@ -116,9 +116,9 @@ Authentication is implemented using **JWT (JSON Web Tokens)**.
 
 ---
 
-## Database Design
+## **Database Design**
 
-### User Table
+### **User Table**
 
 | Field    | Type    | Description             |
 | -------- | ------- | ----------------------- |
@@ -130,7 +130,7 @@ Authentication is implemented using **JWT (JSON Web Tokens)**.
 
 ---
 
-### Task Table
+### **Task Table**
 
 | Field       | Type    | Description       |
 | ----------- | ------- | ----------------- |
@@ -142,9 +142,9 @@ Authentication is implemented using **JWT (JSON Web Tokens)**.
 
 ---
 
-## API Endpoints
+## **API Endpoints**
 
-### User APIs
+### **User APIs**
 
 | Method | Endpoint            | Description         |
 | ------ | ------------------- | ------------------- |
@@ -154,7 +154,7 @@ Authentication is implemented using **JWT (JSON Web Tokens)**.
 
 ---
 
-### Task APIs
+### **Task APIs**
 
 | Method | Endpoint        | Description          |
 | ------ | --------------- | -------------------- |
@@ -166,7 +166,7 @@ Authentication is implemented using **JWT (JSON Web Tokens)**.
 
 ---
 
-## Frontend Components
+## **Frontend Components**
 
 Main React components include:
 
@@ -180,7 +180,7 @@ Main React components include:
 
 ---
 
-## Project Workflow
+## **Project Workflow**
 
 1. User registers
 2. User logs in
@@ -191,7 +191,7 @@ Main React components include:
 
 ---
 
-## Future Enhancements
+## **Future Enhancements**
 
 * Task priority system
 * Task deadline reminders
@@ -201,6 +201,6 @@ Main React components include:
 
 ---
 
-## Author
+## **Author**
 
-Developed as part of a full-stack application project using Java Spring Boot and React.
+Developed as part of a full-stack application project using **Java Spring Boot and React**.
