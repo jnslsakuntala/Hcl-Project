@@ -1,0 +1,17 @@
+com\smarttask\manager\dto\LoginRequest.class
+com\smarttask\manager\security\JwtRequestFilter.class
+com\smarttask\manager\SmartTaskManagerApplication.class
+com\smarttask\manager\model\User.class
+com\smarttask\manager\dto\AuthResponse.class
+com\smarttask\manager\model\Task.class
+com\smarttask\manager\controller\TaskController.class
+com\smarttask\manager\dto\TaskRequest.class
+com\smarttask\manager\config\SecurityConfig.class
+com\smarttask\manager\service\TaskService.class
+com\smarttask\manager\repository\UserRepository.class
+com\smarttask\manager\security\UserDetailsServiceImpl.class
+com\smarttask\manager\controller\UserController.class
+com\smarttask\manager\repository\TaskRepository.class
+com\smarttask\manager\config\CorsConfig.class
+com\smarttask\manager\security\JwtUtil.class
+com\smarttask\manager\service\UserService.class
