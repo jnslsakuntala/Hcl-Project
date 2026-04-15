@@ -15,11 +15,14 @@ const Login = () => {
         e.preventDefault();
         setError('');
         try {
+            console.log('Attempting login with:', { username });
             const response = await api.post('/users/login', { username, password });
+            console.log('Login successful:', response.data);
             login(response.data);
             navigate('/dashboard');
         } catch (err) {
-            setError(err.response?.data || 'Login failed. Please check your credentials.');
+            console.error('Login error:', err.response?.data || err.message);
+            setError(err.response?.data?.message || err.response?.data || 'Login failed. Please check your credentials.');
         }
     };
 

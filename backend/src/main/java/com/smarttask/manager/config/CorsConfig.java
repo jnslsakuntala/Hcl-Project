@@ -18,7 +18,10 @@ public class CorsConfig {
 
         config.setAllowedOriginPatterns(Arrays.asList(
                 "https://*.onrender.com",
-                "http://localhost:5173"
+                "http://localhost:5173",
+                "http://localhost:5174",
+                "http://localhost:5175",
+                "http://localhost:*"
         ));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(Arrays.asList("*"));

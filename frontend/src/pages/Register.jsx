@@ -16,11 +16,27 @@ const Register = () => {
         e.preventDefault();
         setError('');
         try {
-            const response = await api.post('/users/register', { name, username, password });
+            const payload = { name, username, password };
+            console.log('Attempting registration with:', payload);
+            console.log('API baseURL:', import.meta.env.VITE_API_URL);
+            
+            const response = await api.post('/users/register', payload);
+            console.log('Registration successful:', response.data);
+            console.log('Token received:', response.data.token);
+            
             login(response.data);
             navigate('/dashboard');
         } catch (err) {
-            setError(err.response?.data || 'Registration failed. Try again.');
+            console.error('Full error object:', err);
+            console.error('Error status:', err.response?.status);
+            console.error('Error data:', err.response?.data);
+            console.error('Error message:', err.message);
+            
+            const errorMsg = err.response?.data?.message || 
+                           err.response?.data || 
+                           err.message || 
+                           'Registration failed. Try again.';
+            setError(errorMsg);
         }
     };
 
