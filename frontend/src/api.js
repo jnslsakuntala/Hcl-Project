@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL, // ✅ use env variable
+    baseURL: import.meta.env.VITE_API_URL, // ✅ from .env
 });
 
-// Attach token to every request
+// Attach token
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -13,7 +13,7 @@ api.interceptors.request.use((config) => {
     return config;
 });
 
-// Handle unauthorized errors
+// Handle 401
 api.interceptors.response.use(
     (response) => response,
     (error) => {
