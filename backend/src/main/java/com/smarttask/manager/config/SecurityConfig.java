@@ -27,7 +27,7 @@ public class SecurityConfig {
     private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
-    private CorsConfigurationSource corsConfigurationSource; // ✅ IMPORTANT
+    private CorsConfigurationSource corsConfigurationSource;
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
@@ -44,7 +44,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .cors(cors -> cors.configurationSource(corsConfigurationSource)) // ✅ FIXED
+            .cors(cors -> cors.configurationSource(corsConfigurationSource)) // ✅ FIX
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers(
@@ -60,10 +60,8 @@ public class SecurityConfig {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             );
 
-        // Allow H2 console
         http.headers(headers -> headers.frameOptions(frame -> frame.disable()));
 
-        // JWT filter
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
