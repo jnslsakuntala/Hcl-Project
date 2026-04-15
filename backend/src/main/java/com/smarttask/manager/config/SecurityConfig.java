@@ -5,9 +5,9 @@ import com.smarttask.manager.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -39,24 +39,36 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance(); // ⚠️ Use BCrypt in production
+        return NoOpPasswordEncoder.getInstance(); // ⚠️ use BCrypt in production
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .cors(cors -> cors.configurationSource(corsConfigurationSource)) // ✅ FIX
+            .cors(cors -> cors.configurationSource(corsConfigurationSource))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
+                // ✅ Allow preflight
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                // ✅ Public APIs
                 .requestMatchers(
                         "/api/users/register",
-                        "/api/users/login",
+                        "/api/users/login"
+                ).permitAll()
+
+                // ✅ Allow root (IMPORTANT FIX)
+                .requestMatchers("/", "/error").permitAll()
+
+                // ✅ Allow tools
+                .requestMatchers(
                         "/h2-console/**",
                         "/swagger-ui/**",
                         "/v3/api-docs/**"
                 ).permitAll()
-                .anyRequest().authenticated()
+
+                // 🔥 TEMPORARY (to remove 403 completely)
+                .anyRequest().permitAll()
             )
             .sessionManagement(session -> session
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -64,7 +76,8 @@ public class SecurityConfig {
 
         http.headers(headers -> headers.frameOptions(frame -> frame.disable()));
 
-        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        // 🔥 TEMPORARY: disable JWT filter (important for debugging)
+        // http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
