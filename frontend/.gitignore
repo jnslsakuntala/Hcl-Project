@@ -1,3 +1,4 @@
+# ================== FRONTEND ==================
 # Logs
 logs
 *.log
@@ -12,11 +13,35 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# ================== BACKEND (SPRING BOOT) ==================
+# Build files
+target/
+build/
+*.jar
+*.war
+*.class
+
+# H2 Database (VERY IMPORTANT 🔥)
+backend/data/
+*.mv.db
+*.trace.db
+
+# Application properties (secrets)
+application.properties
+application.yml
+.env
+
+# ================== SYSTEM FILES ==================
+.DS_Store
+Thumbs.db
+
+# ================== IDE FILES ==================
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
+*.iml
+
+# ================== WINDOWS ==================
 *.suo
 *.ntvs*
 *.njsproj
